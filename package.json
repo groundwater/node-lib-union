@@ -1,0 +1,16 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint index.js && tap test"
+  },
+  "author": "Jacob Groundwater <groundwater@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemock": "^0.3.3",
+    "jshint": "^2.5.0",
+    "tap": "^0.4.8"
+  }
+}
