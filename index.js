@@ -10,13 +10,15 @@ Union.prototype.pop = function () {
 
   this.stack = Object.getPrototypeOf(this.stack);
 
-  out.__proto__ = undefined;
+  out.__proto__ = null;
   return out;
 };
 
 Union.prototype.push = function (ob) {
+  /* jshint proto:true */
   if (ob) {
-    this.stack = Object.defineProperty(ob, '__proto__', {value: this.stack});
+    ob.__proto__ = this.stack;
+    this.stack = ob;
   } else {
     this.stack = Object.create(this.stack);
   }
