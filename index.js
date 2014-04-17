@@ -5,11 +5,21 @@ function Union() {
 }
 
 Union.prototype.pop = function () {
+  /* jshint proto:true */
+  var out = this.stack;
+
   this.stack = Object.getPrototypeOf(this.stack);
+
+  out.__proto__ = undefined;
+  return out;
 };
 
-Union.prototype.push = function () {
-  this.stack = Object.create(this.stack);
+Union.prototype.push = function (ob) {
+  if (ob) {
+    this.stack = Object.defineProperty(ob, '__proto__', {value: this.stack});
+  } else {
+    this.stack = Object.create(this.stack);
+  }
 };
 
 Union.prototype.set = function (key, val) {
